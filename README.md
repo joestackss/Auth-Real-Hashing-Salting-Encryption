@@ -1,11 +1,11 @@
 # Real-Auth-With-Hashing-Salting
 
-////Step 1 :- Set Up the EJS file i.e home.ejs, login.ejs, register.ejs etc ////////
-////Step 2 :- Set up npm init -y in hyper command line ////////
-////Step 3 :- Install dependencies npm i body-Parser ejs express mongoose ////////
-/////Step 4 :- Create app.js with touch app.js, and open with atom  ////////
-/////Step 5 :- Require express, bodyParser, ejs, mongoose in app.js.  ////////
-/////Step 6 :-Create our server on port 3300 and make our app.listen  ////////
+Step 1 :- Set Up the EJS file i.e home.ejs, login.ejs, register.ejs etc
+Step 2 :- Set up npm init -y in hyper command line ////////
+Step 3 :- Install dependencies npm i body-Parser ejs express mongoose ////////
+Step 4 :- Create app.js with touch app.js, and open with atom  ////////
+Step 5 :- Require express, bodyParser, ejs, mongoose in app.js.  ////////
+Step 6 :-Create our server on port 3300 and make our app.listen  ////////
 ////Step 7 :- create const variable app and assign express to it  ////////
 /////Step 8 :- assign express.static("public") to app.use so it render static pages like login.ejs ////
 ////Step 9 :- assign view engine, ejs to app.set so our enigine use ejs template ////////
