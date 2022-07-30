@@ -41,8 +41,18 @@ Step 6 :-Create our server on port 3300 and make our app.listen  ////////
 ///////Step 2 :- hash the register password on app.post(/register) with md5(req.body.password) ////////
 ///////Step 3 :-  hash the login password on app.post(/login) with md5(req.body.password)////////
 
-///////STEP 5: HASH and SALT YOUR PASSWORD USING BCRYPT////////
+STEP 5: HASH and SALT YOUR PASSWORD USING BCRYPT
 
-///////Step 1 :- Install bcrypt using npm i and require it in atom////////
-///////Step 2 :- Create variable saltRounds and assign 10 to it. ////////
-///////Step 3 :-  hash the login password on app.post(/login) with md5(req.body.password)////////
+Step 1 :- Install bcrypt using npm i and require it in atom.
+Step 2 :- Create variable saltRounds and assign 10 to it.
+Step 3 :- create a bcrypt.hash in app.post(/register).
+Step 3 :- create a bcrypt.hash in app.post(/login).
+
+STEP 6: YOU CAN ALSO HASH and SALT YOUR PASSWORD USING PASSPORT-MONGOOSE
+
+Step 1 :- Install passport, passport-local, passport-local-mongoose express-session using npm i and require it in atom.
+Step 2 :- set app.use session and add object to the variable.
+Step 3 :- initialize passport and make passport-session handle session, assign both to app.use.
+Step 4 :- Set User schmema and make passport plugin hash and salt our password.
+Step 5 :- Set passport-mongoose to use strategy .
+Step 6 :- Set passport to serializeUser and deserializeUser i.e create cookie and break the cookie when a user logs back in browser.
