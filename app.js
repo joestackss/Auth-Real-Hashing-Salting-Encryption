@@ -77,6 +77,7 @@ passport.use(new GoogleStrategy({
   },
   function(request, accessToken, refreshToken, profile, done) {
     console.log(profile);
+
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return done(err, user);
     });
@@ -86,6 +87,17 @@ passport.use(new GoogleStrategy({
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+app.get("/auth/google",
+  passport.authenticate('google', { scope: ["profile"] })
+);
+
+app.get("/auth/google/secrets",
+  passport.authenticate('google', { failureRedirect: "/login" }),
+  function(req, res) {
+    // Successful authentication, redirect to secrets.
+    res.redirect("/secrets");
+  });
 
 app.get("/login", (req, res) => {
   res.render("login");
@@ -126,7 +138,33 @@ app.get("/secrets", (req,res) => {
     }
 });
 
+app.get("/submit", function(req, res){
+  if (req.isAuthenticated()){
+    res.render("submit");
+  } else {
+    res.redirect("/login");
+  }
+});
 
+app.post("/submit", function(req, res){
+  const submittedSecret = req.body.secret;
+
+//Once the user is authenticated and their session gets saved, their user details are saved to req.user.
+  // console.log(req.user.id);
+
+  User.findById(req.user.id, function(err, foundUser){
+    if (err) {
+      console.log(err);
+    } else {
+      if (foundUser) {
+        foundUser.secret = submittedSecret;
+        foundUser.save(function(){
+          res.redirect("/secrets");
+        });
+      }
+    }
+  });
+});
 
 app.get("/logout", function(req, res) {
   req.logout((err) => {
